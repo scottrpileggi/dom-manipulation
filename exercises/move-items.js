@@ -2,7 +2,7 @@
  * SORTING NODES WITHIN A CONTAINER
  * Please, make sure to read the following files in the exercises-info folder before you start
  * * 01 SelectNodes.md
-*/
+ */
 
 /**
  * @task
@@ -12,8 +12,8 @@
  */
 
 // Your code goes here...
-
-
+const allItems = document.getElementsByClassName("item");
+console.log(allItems);
 
 /**
  * @task
@@ -23,19 +23,17 @@
  * */
 
 // Your code goes here
-
-
-
+const main = document.getElementById("main");
+console.log(main);
 /**
  * @task
  * Select the favorites container by id of "favs"
  * Store it in the favs constant
  * Example: const favs = <Your code>;
  */
-
+const favs = document.getElementById("favs");
+console.log(favs);
 // Your code goes here
-
-
 
 /**
  * @task
@@ -47,9 +45,17 @@
  */
 
 // Your code goes here
+const updateCollections = (id, direction) => {
+  if (direction === "toFavs") {
+    document.getElementById(id).children[0].className = "fas fa-heart-broken";
+    return favs.appendChild(document.getElementById(id));
+  } else {
+    main.appendChild(document.getElementById(id));
+    return (item.children[0].className = "fa-solid fa-heart-circle-plus");
+  }
+};
 
-
-
+// updateCollections("1", "toFavs");
 /**
  * @task
  * Iterate through the every item in allItems NodeList and apply the
@@ -65,5 +71,21 @@
  */
 
 // Your code goes here...
+[...allItems].forEach((item) => {
+  item.addEventListener("click", () => {
+    const parentId = item.parentElement.id;
+    const itemId = item.id;
 
+    const direction = () => {
+      return parentId === "main" ? "toFavs" : "toMain";
+    };
 
+    if (direction === "toFavs") {
+      item.children[0].className = "fas fa-heart-broken";
+      console.log(item.children[0].className);
+    } else {
+      item.children[0].className = "fa-solid fa-heart-circle-plus";
+    }
+    updateCollections(itemId, direction());
+  });
+});
