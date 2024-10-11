@@ -13,7 +13,6 @@
 
 // Your code goes here...
 const allItems = document.getElementsByClassName("item");
-
 /**
  * @task
  * Select the main container by the id of "main"
@@ -76,12 +75,6 @@ const updateCollections = (id, direction) => {
     const direction = () => {
       return parentId === "main" ? "toFavs" : "toMain";
     };
-
-    if (direction === "toFavs") {
-      item.children[0].className = "fas fa-heart-broken";
-    } else {
-      item.children[0].className = "fa-solid fa-heart-circle-plus";
-    }
     updateCollections(itemId, direction());
   });
 });
