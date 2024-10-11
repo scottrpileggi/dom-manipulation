@@ -13,7 +13,6 @@
 
 // Your code goes here...
 const allItems = document.getElementsByClassName("item");
-console.log(allItems);
 
 /**
  * @task
@@ -24,7 +23,6 @@ console.log(allItems);
 
 // Your code goes here
 const main = document.getElementById("main");
-console.log(main);
 /**
  * @task
  * Select the favorites container by id of "favs"
@@ -32,7 +30,6 @@ console.log(main);
  * Example: const favs = <Your code>;
  */
 const favs = document.getElementById("favs");
-console.log(favs);
 // Your code goes here
 
 /**
@@ -82,7 +79,6 @@ const updateCollections = (id, direction) => {
 
     if (direction === "toFavs") {
       item.children[0].className = "fas fa-heart-broken";
-      console.log(item.children[0].className);
     } else {
       item.children[0].className = "fa-solid fa-heart-circle-plus";
     }
