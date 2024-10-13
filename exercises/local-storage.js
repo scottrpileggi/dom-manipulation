@@ -38,3 +38,63 @@
  */
 
 // Your code goes here...
+const cardContainer = document.getElementsByClassName("cardsContainer")[0];
+console.log(Array.from(cardContainer.children));
+
+Array.from(cardContainer.children).forEach((item) => {
+  if (localStorage.getItem("favorites").includes(item.id)) {
+    item.classList.add("red");
+  }
+});
+
+const setBackground = (elem) => {
+  if (!Array.from(elem.classList).includes("red")) {
+    elem.classList.add("red");
+  } else {
+    elem.classList.remove("red");
+  }
+};
+
+/* Array.from(cardContainer.children).forEach((elem) => {
+  if (localStorage.includes(elem.id)) {
+    setBackground(elem);
+  }
+}); */
+
+const removeFromFavs = (id) => {
+  const itemToDelete = id;
+  const storageArr = localStorage.getItem("favorites").split(",");
+  storageArr.splice(storageArr.indexOf(itemToDelete), 1);
+  const updatedMyListValue = storageArr.join(",");
+
+  return localStorage.setItem("favorites", updatedMyListValue);
+};
+
+const addOrRemove = (id) => {
+  if (localStorage.getItem("favorites") == null) {
+    return localStorage.setItem("favorites", `${id}`);
+  } else if (!localStorage.getItem("favorites").includes(id)) {
+    const newItems = id;
+    let storageData = localStorage.getItem("favorites");
+    storageData += `,${newItems}`;
+    return localStorage.setItem("favorites", storageData);
+  } else {
+    return removeFromFavs(id);
+  }
+};
+
+// console.log(localStorage.getItem("favorites").includes(1));
+
+// setBackground(1);
+
+// setBackgroundToRed(container, 1);
+
+const callbackFn = (e) => {
+  const id = e.target.id;
+  addOrRemove(id);
+  if (!Array.from(e.target.classList).includes("cardsContainer")) {
+    setBackground(e.target);
+  }
+};
+
+cardContainer.addEventListener("click", callbackFn);

@@ -12,7 +12,6 @@
  */
 // Your code goes here...
 const allItems = document.getElementsByClassName("item");
-console.log(allItems);
 /**
  * @task
  * Select all sort buttons by class of "sortBtn" as a NodeList.
@@ -22,7 +21,6 @@ console.log(allItems);
 
 // Your code goes here...
 const sortBtn = document.getElementsByClassName("sortBtn");
-console.log(sortBtn);
 /**
  * @task
  * Create a sortData function that follows the list of requirements:
@@ -38,7 +36,7 @@ console.log(sortBtn);
 const sortData = (direction) => {
   const mainContainer = document.getElementById("main");
   const array = Array.from(allItems);
-  console.log(mainContainer);
+
   direction === "asc"
     ? array.sort((a, b) => a.id - b.id)
     : direction === "desc"
@@ -49,9 +47,6 @@ const sortData = (direction) => {
     mainContainer.append(item);
   });
 };
-
-console.log(sortData("asc"));
-
 /**
  * @task
  * Iterate through the every item in sortBtn NodeList and apply the
