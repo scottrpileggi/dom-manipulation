@@ -41,6 +41,7 @@
 const cardContainer = document.getElementsByClassName("cardsContainer")[0];
 console.log(Array.from(cardContainer.children));
 
+// apply red background to previously selected elements upon browser refresh..
 Array.from(cardContainer.children).forEach((item) => {
   if (localStorage.getItem("favorites").includes(item.id)) {
     item.classList.add("red");
@@ -54,12 +55,6 @@ const setBackground = (elem) => {
     elem.classList.remove("red");
   }
 };
-
-/* Array.from(cardContainer.children).forEach((elem) => {
-  if (localStorage.includes(elem.id)) {
-    setBackground(elem);
-  }
-}); */
 
 const removeFromFavs = (id) => {
   const itemToDelete = id;
@@ -82,12 +77,6 @@ const addOrRemove = (id) => {
     return removeFromFavs(id);
   }
 };
-
-// console.log(localStorage.getItem("favorites").includes(1));
-
-// setBackground(1);
-
-// setBackgroundToRed(container, 1);
 
 const callbackFn = (e) => {
   const id = e.target.id;
