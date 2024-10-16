@@ -39,14 +39,17 @@
 
 // Your code goes here...
 const cardContainer = document.getElementsByClassName("cardsContainer")[0];
-console.log(Array.from(cardContainer.children));
 
-// apply red background to previously selected elements upon browser refresh..
-Array.from(cardContainer.children).forEach((item) => {
-  if (localStorage.getItem("favorites").includes(item.id)) {
-    item.classList.add("red");
-  }
-});
+// apply red background to previously selected elements or create 'favorites' in local storage if null -- upon browser refresh..
+if (!localStorage.getItem("favorites")) {
+  localStorage.setItem("favorites", 0);
+} else {
+  Array.from(cardContainer.children).forEach((item) => {
+    if (localStorage.getItem("favorites").includes(item.id)) {
+      item.classList.add("red");
+    }
+  });
+}
 
 const setBackground = (elem) => {
   if (!Array.from(elem.classList).includes("red")) {
