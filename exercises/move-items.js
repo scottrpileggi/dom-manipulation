@@ -46,8 +46,9 @@ const updateCollections = (id, direction) => {
     document.getElementById(id).children[0].className = "fas fa-heart-broken";
     return favs.appendChild(document.getElementById(id));
   } else {
-    main.appendChild(document.getElementById(id));
-    return (item.children[0].className = "fa-solid fa-heart-circle-plus");
+    document.getElementById(id).children[0].className =
+      "fa-solid fa-heart-circle-plus";
+    return main.appendChild(document.getElementById(id));
   }
 };
 
